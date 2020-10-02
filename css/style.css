@@ -6,3 +6,7 @@ html {
     box-sizing: inherit;
     font-family: 'Noto Serif', serif;
 }
+
+body {
+    background: center / cover no-repeat url("../images/background-lightened.jpg");
+}
