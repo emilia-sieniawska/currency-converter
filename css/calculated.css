@@ -1,0 +1,11 @@
+.calculated {
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.outcome {
+    color: rgb(32, 161, 86);
+    font-size: 20px;
+}

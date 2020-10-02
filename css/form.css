@@ -1,0 +1,33 @@
+.form__fieldset {
+    padding: 20px;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+.form__legend {
+    display: inline-block;
+    font-size: 22px;
+    line-height: 1.5;
+    border: 2px solid #bbb;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(120, 241, 170);
+}
+
+.form__label {
+    width: 100%;
+    display: inline-block;
+    padding: 5px;
+
+}
+
+.form__field {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.form__button {
+    padding: 10px;
+    border: 1px solid #bbb;
+}
