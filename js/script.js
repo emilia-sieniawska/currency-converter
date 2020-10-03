@@ -1,7 +1,4 @@
 {
-    const PLNAmountElement = document.querySelector(".js-PLNAmount");
-    const currencyPicker = document.querySelector(".js-currencyPicker");
-    const outcomeElement = document.querySelector(".js-outcome");
 
 
     const calculateOutcome = (PLNAmount, currency) => {
@@ -17,22 +14,30 @@
         }
     };
 
+const onFormSubmit = (event) => {
+    event.preventDefault();
+
+    const PLNAmountElement = document.querySelector(".js-PLNAmount");
+    const currencyPicker = document.querySelector(".js-currencyPicker");
+    const outcomeElement = document.querySelector(".js-outcome");
+
+    const PLNAmount = +PLNAmountElement.value;
+    const currency = currencyPicker.value;
+
+    let outcome = calculateOutcome(PLNAmount, currency);
+
+    outcomeElement.innerHTML = `${PLNAmount} PLN = <strong>${outcome.toFixed(
+        2
+    )} ${currency} </strong>`;
+};
+
+const init = () => {
     const formElement = document.querySelector(".js-form");
 
-    formElement.addEventListener("submit", (event) => {
-        event.preventDefault();
+    formElement.addEventListener("submit", onFormSubmit); 
+};
 
-        const PLNAmount = +PLNAmountElement.value;
-        const currency = currencyPicker.value;
-
-        let outcome = calculateOutcome(PLNAmount, currency);
-
-        outcomeElement.innerHTML = `${PLNAmount} PLN = <strong>${outcome.toFixed(
-            2
-        )} ${currency} </strong>`;
-
-
-    });
+init();
 }
 
         /* próbowałam tak, ale nie wyszło:
