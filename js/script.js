@@ -1,7 +1,5 @@
 {
-
-
-    const calculateOutcome = (PLNAmount, currency) => {
+const calculateOutcome = (PLNAmount, currency) => {
         const USDrate = 3.73;
         const EURrate = 4.40;
     
@@ -14,21 +12,23 @@
         }
     };
 
+const updateOutcomeText = (PLNAmount, outcome, currency) => {    
+    const outcomeElement = document.querySelector(".js-outcome");
+    outcomeElement.innerHTML = `${PLNAmount} PLN = <strong>${outcome.toFixed(2)} ${currency} </strong>`;
+};
+
 const onFormSubmit = (event) => {
     event.preventDefault();
 
     const PLNAmountElement = document.querySelector(".js-PLNAmount");
     const currencyPicker = document.querySelector(".js-currencyPicker");
-    const outcomeElement = document.querySelector(".js-outcome");
 
     const PLNAmount = +PLNAmountElement.value;
     const currency = currencyPicker.value;
 
     let outcome = calculateOutcome(PLNAmount, currency);
 
-    outcomeElement.innerHTML = `${PLNAmount} PLN = <strong>${outcome.toFixed(
-        2
-    )} ${currency} </strong>`;
+    updateOutcomeText(PLNAmount, outcome, currency);
 };
 
 const init = () => {
