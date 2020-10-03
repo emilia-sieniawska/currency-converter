@@ -1,43 +1,48 @@
-let PLNAmountElement = document.querySelector(".js-PLNAmount");
-let currencyPicker = document.querySelector(".js-currencyPicker");
-let outcomeElement = document.querySelector(".js-outcome");
-let formElement = document.querySelector(".js-form");
+{
+    const PLNAmountElement = document.querySelector(".js-PLNAmount");
+    const currencyPicker = document.querySelector(".js-currencyPicker");
+    const outcomeElement = document.querySelector(".js-outcome");
 
-let USDrate = 3.73;
-let EURrate = 4.40;
 
-formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
+    const calculateOutcome = (PLNAmount, currency) => {
+        const USDrate = 3.73;
+        const EURrate = 4.40;
     
-    /* próbowałam tak, ale nie wyszło:
-    
-        let PLNAmount = +PLNAmountElement.value;
-        if (currencyPicker.value === "USD") {
-            let outcome = PLNAmount * USDrate;
-            outcomeElement.innerText = outcome;
-        } else {
-            let outcome = PLNAmount * EURrate;
-            outcomeElement.innerText = outcome;
+        switch (currency) {
+            case "USD":
+                return PLNAmount / USDrate;
+              
+            case "EUR":
+                return PLNAmount / EURrate;
         }
-    */
+    };
+
+    const formElement = document.querySelector(".js-form");
+
+    formElement.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const PLNAmount = +PLNAmountElement.value;
+        const currency = currencyPicker.value;
+
+        let outcome = calculateOutcome(PLNAmount, currency);
+
+        outcomeElement.innerHTML = `${PLNAmount} PLN = <strong>${outcome.toFixed(
+            2
+        )} ${currency} </strong>`;
 
 
-    let PLNAmount = +PLNAmountElement.value;
-    let currency = currencyPicker.value;
+    });
+}
 
-    switch (currency) {
-        case "USD":
-            outcome = PLNAmount / USDrate;
-            break;
-
-        case "EUR":
-            outcome = PLNAmount / EURrate;
-            break;
-    }
-
-    outcomeElement.innerHTML = `${PLNAmount} PLN = <strong>${outcome.toFixed(
-        2
-    )} ${currency} </strong>`;
-
-
-});
+        /* próbowałam tak, ale nie wyszło:
+        
+            const PLNAmount = +PLNAmountElement.value;
+            if (currencyPicker.value === "USD") {
+                const outcome = PLNAmount * USDrate;
+                outcomeElement.innerText = outcome;
+            } else {
+                const outcome = PLNAmount * EURrate;
+                outcomeElement.innerText = outcome;
+            }
+        */
